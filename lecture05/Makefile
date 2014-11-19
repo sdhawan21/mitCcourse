@@ -9,9 +9,14 @@ LDFLAGS := -Wl,--no-as-needed -lm
 CXX=g++
 
 shape: shape.o
-	$(CXX)  -o $@ $^ 
+	$(CXX)  -o $@ $^ $(CXXFLAGS)
 shape.o: shape.cpp
 	$(CXX) -c $< $(CXXFLAGS)
 	
+stlqueue:stlqueue.o
+	$(CXX) -o $@ $^
+stlqueue.o: stlqueue.cpp
+	$(CXX) -c $< $(CXXFLAGS)	
+
 clean:
 	rm *.o
